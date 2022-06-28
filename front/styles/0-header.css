@@ -1,0 +1,193 @@
+/* header */
+header {
+	background-color: white;
+	height: 400px;
+	width: 100%;
+	border-bottom: 1px solid #CCCCCC;
+    display: flex;
+    align-items:flex-start;
+}
+
+.description {
+    margin: 10px;
+    width: 400px;
+    height: 60px;
+    font-size: 33px;
+    color: #484848;
+}
+.description h1 {
+    margin: 10px;
+    width: 400px;
+    height: 30px;
+    font-size: 15px;
+    color: #484848;
+}
+.description h2 {
+    margin: 10px;
+    width: 400px;
+    height: 30px;
+    font-size: 15px;
+    color: #484848;
+}
+
+.mario {
+    width: 100%;
+    margin: 0 auto 0 auto;
+    margin-top: 15px;
+    margin-bottom: 20px;
+
+    height: 400px;
+    background: url("../pictures/Mario.png") no-repeat center;
+    background-position-x: right;
+    background-size: 90mm;
+}
+
+/* common */
+body {
+    margin: 10px;
+    padding: 0;
+    color: #484848;
+    font-size: 14px;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+nav {
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    position: sticky;
+    top: 0px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    position: relative;
+}
+
+nav ul::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+nav a {
+    display: block;
+    text-decoration: none;
+    color: #484848;
+    border-bottom: 2px solid transparent;
+    padding: 10px 0px;
+}
+
+nav a hover {
+    color: orangered;
+    border-bottom: 2px solid gold;
+}
+
+.sous {
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav > ul li:hover .sous {
+    display: block;
+}
+
+.sous li {
+    float:none;
+    width: 100%;
+    text-align: left;
+}
+
+.sous a {
+    padding: 10px;
+    border-bottom: none;
+}
+
+.sous a:hover {
+    border-bottom: none;
+    background-color: RGBa(200,200,200,0.1);
+}
+
+.deroulant > a::after {
+    content: " ▼";
+    font-size: 12px;
+}
+
+/* footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    height: 60px;
+    border-top: 1px solid #CCCCCC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+label {
+    font-size: 18px;
+    padding-right: 50px;
+}
+select {
+    font-size: 16px;
+    padding: 10px 5px;
+}
+select:hover {
+    background-color: RGBa(200,200,200,0.1);
+}
+
+select{
+    background-image: url(../pictures/characters/Luigi.png);
+}
+
+
+
+
+
+.container {
+    max-width: 1000px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.filters {
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+section.filters button{
+    font-size: 18px;
+    color: white;
+    background-color: #FF5A5F;
+    height: 48px;
+    border: 0px;
+    border-radius: 4px;
+    width: 20%;
+    margin-right: 30px;
+    opacity: 1;
+}
+
+section.filters button:hover {
+    opacity: 0.9;
+}
