@@ -1,25 +1,58 @@
 const express = require('express');
 const app = express();
+const mysql = require('mysql');
+const myconnection = require('express-myconnection');
+
+const db = {
+    host : 'localhost',
+    user : 'root',
+    password : 'Carbone12.',
+    database : 'rider_soul_builder',
+}
+
+// extraction of data
+app.use(express.urlencoded({extended: false}));
+
+// connection to database
+app.use(myconnection(mysql, db, 'pool'));
+
+// view engine
+app.set('view engine', 'ejs');
+app.set('views', 'front');
 
 // statics ressources
 app.use(express.static('./front/pictures'));
 app.use(express.static('./front/styles'));
 
 // routes
-app.get('/home', (req, res) => {
-    res.status(200).sendFile("./front/home.html", {root: __dirname});
+app.get('/', (req, res) => {
+    req.getConnection((err, connection) => {
+        if (err) {
+            console.log(err);
+        } else {
+            connection.query('SELECT name FROM characters', [], (err, result) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.status(200).render('home', {result});
+                }
+            });
+        }
+    });
+});
+
+// retrieve the chosen character
+app.post('/character', (req, res) => {
+    //console.log(req.body);
+    let character = req.body.name;
 });
 
 app.get('/results', (req, res) => {
-    res.status(200).sendFile("./front/results.html", {root: __dirname});
-});
-
-app.get('/', (req, res) => {
-    res.status(300).redirect("/home");
+    res.status(200).render('results');
 });
 
 app.use((req, res) => {
-    res.status(404).sendFile("./front/error.html", {root : __dirname});
+    res.status(404).render('error');
 });
 
 // listening on port 5001
