@@ -6,13 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results</title>
     <link rel="icon" href="/icon.png" type="image/png">
-<!--
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/toggle_switch.css">
--->
 </head>
 <body>
-    <h1>Results</h1>
-    <p>Here the 3 configurations that best suits you Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima molestias sequi eveniet temporibus rerum expedita ea est, error culpa, excepturi, unde explicabo consequatur accusamus iure quia nemo commodi nobis. Nisi.</p>
+    <div class="content">
+        <div class="builder result">
+            <h1>Results</h1>
+            <br />
+            <p>Here the 3 configurations that best suits you </p><br>
+            <div class="config wanted">
+                <ul>
+                    <% for(i=0; i<queryResults.length; i++) { %>
+                        <h4>Wanted</h4>
+                        <li><%= queryResults[i].character_name %></li>
+                        <li><%= queryResults[i].kart_name %></li>
+                        <li><%= queryResults[i].wheel_name %></li>
+                        <li><%= queryResults[i].glider_name %></li>
+                        <li>speed: <%= queryResults[i].speed %></li>
+                        <li>acceleration: <%= queryResults[i].acceleration %></li>
+                        <li>weight: <%= queryResults[i].weight %></li>
+                        <li>handling: <%= queryResults[i].handling %></li>
+                        <li>grip: <%= queryResults[i].grip %></li>
+                        <br>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="config">
+                <ul>
+                    <% for(i=0; i<queryResults.length; i++) { %>
+                        <h4>Configuration <%= i + 1 %></h4>
+                        <li><%= queryResults[i].character_name %></li>
+                        <li><%= queryResults[i].kart_name %></li>
+                        <li><%= queryResults[i].wheel_name %></li>
+                        <li><%= queryResults[i].glider_name %></li>
+                        <li>speed: <%= queryResults[i].speed %></li>
+                        <li>acceleration: <%= queryResults[i].acceleration %></li>
+                        <li>weight: <%= queryResults[i].weight %></li>
+                        <li>handling: <%= queryResults[i].handling %></li>
+                        <li>grip: <%= queryResults[i].grip %></li>
+                        <br>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

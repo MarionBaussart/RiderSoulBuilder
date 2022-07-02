@@ -6,72 +6,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rider Soul Builder</title>
     <link rel="icon" href="/icon.png" type="image/png">
-<!--
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/toggle_switch.css">
--->
 </head>
 <body>
-
     <div class="content">
-
         <div class="builder">
 
             <div class="title">
                 <h1>Driver Soul Builder</h1>
                 <h2>Drive as you are !</h2>
                 <img src="/Mario.png" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis sapiente, consectetur adipisci ut tenetur voluptatum iste at velit incidunt repellat dignissimos optio, ea fugiat obcaecati voluptates totam, natus labore. Mollitia?</p>
-            </div>
+                <p>for Mario Kart 8 Deluxe players</p>
+                <p>Choose the kart that best fit you.</p>
+            </div><br>
 
-            <div class="question">
+            <form class="question" action="/characteristic" method="post">
                 <h3>Want a specific character ?</h3>
                 <div class="button">
-                    <label class="switch">
-                        <input type="checkbox">
+                    <label class="switch character">
+                        <input type="checkbox" name="checkChar">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="dropdown">
+                    <select name="character">
+                        <% for(i=0; i<characterName.length; i++) { %>
+                            <option value="<%= characterName[i].name %>"><%= characterName[i].name %></option>
+                        <% } %>
+                    </select>
+                </div>
+                <h3>Want a specific kart ?</h3>
+                <div class="button">
+                    <label class="switch kart">
+                        <input type="checkbox" name="checkKart">
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="dropdown">
-                    <select name="character" action="/character" method="post">
-                        <% for(i=0; i<result.length; i++) { %>
-                            <option value="name"><%= result[i].name %></option>
+                    <select name="kart">
+                        <% for(i=0; i<kartName.length; i++) { %>
+                            <option value="<%= kartName[i].name %>"><%= kartName[i].name %></option>
                         <% } %>
                     </select>
                 </div>
-
-                <h3>Want a specific kart ?</h3>
+                <h3>Want specific wheels ?</h3>
                 <div class="button">
-                    <label class="switch">
-                        <input type="checkbox">
+                    <label class="switch wheel">
+                        <input type="checkbox" name="checkWheel">
                         <span class="slider round"></span>
                     </label>
                 </div>
-                <div class="choice">
-                    <select name="kart">
-                        <option value="1">Standard Kart</option>
-                        <option value="2">Pipe Frame</option>
-                        <option value="3">Mach 8</option>
-                        <option value="4">Steel Driver</option>
-                        <option value="5">Cat Cruiser</option>
-                        <option value="6">Circuit Special</option>
-                        <option value="7">Tri-Speeder</option>
-                        <option value="8">Badwagon</option>
-                        <option value="9">Prancer</option>
+                <div class="dropdown">
+                    <select name="wheels">
+                        <% for(i=0; i<wheelName.length; i++) { %>
+                            <option value="<%= wheelName[i].name %>"><%= wheelName[i].name %></option>
+                        <% } %>
                     </select>
                 </div>
-            </div>
+                <h3>Want a specific glider ?</h3>
+                <div class="button">
+                    <label class="switch glider">
+                        <input type="checkbox" name="checkGlider">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
 
-
-
+                <div class="dropdown">
+                    <select name="glider">
+                        <% for(i=0; i<gliderName.length; i++) { %>
+                            <option value="<%= gliderName[i].name %>"><%= gliderName[i].name %></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="range characteristic">
+                    <h3>Desired characteristics</h3>
+                    <h4>Speed</h4>
+                    <input type="range" name="speed" min="0" max="6" step="0.25" list="tickmarks">
+                    <datalist id="tickmarks">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option>
+                    </datalist>
+                    <h4>Acceleration</h4>
+                    <input type="range" name="acceleration" min="0" max="6" step="0.25" list="tickmarks">
+                    <datalist id="tickmarks">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option>
+                    </datalist>
+                    <h4>Weight</h4>
+                    <input type="range" name="weight" min="0" max="6" step="0.25" list="tickmarks">
+                    <datalist id="tickmarks">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option>
+                    </datalist>
+                    <h4>Handling</h4>
+                    <input type="range" name="handling" min="0" max="6" step="0.25" list="tickmarks">
+                    <datalist id="tickmarks">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option>
+                    </datalist>
+                    <h4>Grip</h4>
+                    <input type="range" name="grip" min="0" max="6" step="0.25" list="tickmarks">
+                    <datalist id="tickmarks">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option>
+                    </datalist>
+                </div>
+                <br>
+                <div class="done">
+                    <a href="./results"><input type="submit" value="Done"></a>
+                </div>
+            </form>
 
         </div>
-
-
-
-
     </div>
-
-
 </body>
 </html>
