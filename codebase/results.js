@@ -148,13 +148,32 @@ var compareConfig = async function(characterName, kartName, wheelName, gliderNam
         console.log(oneBestConfig);
         console.log(twoBestConfig);
         console.log(threeBestConfig);
-        console.log(characterName.localeCompare('nervermind'));
-        console.log(kartName.localeCompare('nervermind'));
-        console.log(wheelName.localeCompare('nervermind'));
-        console.log(gliderName.localeCompare('nervermind'));
+        // console.log(characterName.localeCompare('nervermind'));
+        // console.log(kartName.localeCompare('nervermind'));
+        // console.log(wheelName.localeCompare('nervermind'));
+        // console.log(gliderName.localeCompare('nervermind'));
 
-        connection.end();
+
+        // create and update table results
+        connection.query("TRUNCATE TABLE results", function(err, results) {
+            if (err) throw err;
+            let sqlResult = "INSERT INTO results (character_name, kart_name, wheel_name, glider_name, speed, acceleration, weight, handling, grip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            connection.query(sqlResult, [oneBestConfig.character_name, oneBestConfig.kart_name, oneBestConfig.wheel_name, oneBestConfig.glider_name,
+                                         oneBestConfig.speed, oneBestConfig.acceleration, oneBestConfig.weight, oneBestConfig.handling, oneBestConfig.grip,
+                                         twoBestConfig.character_name, twoBestConfig.kart_name, twoBestConfig.wheel_name, twoBestConfig.glider_name,
+                                         twoBestConfig.speed, twoBestConfig.acceleration, twoBestConfig.weight, twoBestConfig.handling, twoBestConfig.grip,
+                                         threeBestConfig.character_name, threeBestConfig.kart_name, threeBestConfig.wheel_name, threeBestConfig.glider_name,
+                                         threeBestConfig.speed, threeBestConfig.acceleration, threeBestConfig.weight, threeBestConfig.handling, threeBestConfig.grip],
+                                         function (err) {
+                if (err) throw err;
+                console.log(sqlResult);
+                connection.end();
+            });
+        });
     });
 }
 
 compareConfig(characterName, kartName, wheelName, gliderName);
+
+module.exports = compareConfig;
+//
