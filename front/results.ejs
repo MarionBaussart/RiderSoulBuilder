@@ -34,17 +34,17 @@
             </div>
             <div class="config">
                 <ul>
-                    <% for(i=0; i<queryResults.length; i++) { %>
+                    <% for(i=0; i<tableResults.length; i++) { %>
                         <h4>Configuration <%= i + 1 %></h4>
-                        <li><%= queryResults[i].character_name %></li>
-                        <li><%= queryResults[i].kart_name %></li>
-                        <li><%= queryResults[i].wheel_name %></li>
-                        <li><%= queryResults[i].glider_name %></li>
-                        <li>speed: <%= queryResults[i].speed %></li>
-                        <li>acceleration: <%= queryResults[i].acceleration %></li>
-                        <li>weight: <%= queryResults[i].weight %></li>
-                        <li>handling: <%= queryResults[i].handling %></li>
-                        <li>grip: <%= queryResults[i].grip %></li>
+                        <li><%= tableResults[i].character_name %></li>
+                        <li><%= tableResults[i].kart_name %></li>
+                        <li><%= tableResults[i].wheel_name %></li>
+                        <li><%= tableResults[i].glider_name %></li>
+                        <li>speed: <%= tableResults[i].speed %></li>
+                        <li>acceleration: <%= tableResults[i].acceleration %></li>
+                        <li>weight: <%= tableResults[i].weight %></li>
+                        <li>handling: <%= tableResults[i].handling %></li>
+                        <li>grip: <%= tableResults[i].grip %></li>
                         <br>
                     <% } %>
                 </ul>
