@@ -14,10 +14,10 @@ connection.connect(function(err) {
 });
 module.exports = connection;
 
-let characterName = 'Daisy';
+let characterName = 'nevermind';
 let kartName = 'nevermind';
 let wheelName = 'nevermind';
-let gliderName = 'nevermind';
+let gliderName = 'Cloud Glider';
 const speed = 5;
 const acceleration = 6;
 const weight = 0;
@@ -38,18 +38,36 @@ const priority =  configWanted['speed'] > configWanted['acceleration'] ? 'speed'
 
 // extract possibles configurations with config wanted
 var getPossibleConfig = function (characterName, kartName, wheelName, gliderName, callback) {
+    let firstQuery = 0;
     let sqlQuery = "SELECT * FROM configurations ";
     if (!(characterName.localeCompare('nervermind') === 1)) {
-        sqlQuery = sqlQuery + "WHERE character_name = '" + characterName + "' ";
+        if (firstQuery === 0) {
+            sqlQuery = sqlQuery + "WHERE character_name = '" + characterName + "' ";
+            firstQuery++;
+        }
     }
     if (!(kartName.localeCompare('nervermind') === 1)) {
-        sqlQuery = sqlQuery + "AND kart_name = '" + kartName + "' ";
+        if (firstQuery === 0) {
+            sqlQuery = sqlQuery + "WHERE kart_name = '" + kartName + "' ";
+            firstQuery++;
+        } else {
+            sqlQuery = sqlQuery + "AND kart_name = '" + kartName + "' ";
+        }
     }
     if (wheelName.localeCompare('nevermind')) {
-        sqlQuery = sqlQuery + "AND wheel_name = '" + wheelName + "' ";
+        if (firstQuery === 0) {
+            sqlQuery = sqlQuery + "WHERE wheel_name = '" + wheelName + "' ";
+            firstQuery++;
+        } else {
+            sqlQuery = sqlQuery + "AND wheel_name = '" + wheelName + "' ";
+        }
     }
     if (!(gliderName.localeCompare('nervermind') === 1)) {
-        sqlQuery = sqlQuery + "AND glider_name = '" + gliderName + "' ";
+        if (firstQuery === 0) {
+            sqlQuery = sqlQuery + "WHERE glider_name = '" + gliderName + "' ";
+        } else {
+            sqlQuery = sqlQuery + "AND glider_name = '" + gliderName + "' ";
+        }
     }
     connection.query(sqlQuery, function (err, configPossibles, fields) {
         if (err) throw err;
@@ -106,7 +124,7 @@ var compareConfig = async function(characterName, kartName, wheelName, gliderNam
                 }
             }
         }
-        // retrieves the three best config by their index
+        // retrieves the three best config by priority
         var oneBestConfig ={};
         var twoBestConfig ={};
         var threeBestConfig ={};
