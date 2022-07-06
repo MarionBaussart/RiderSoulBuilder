@@ -36,13 +36,6 @@ const configWanted = {'characterName': characterName,
 
 const priority =  configWanted['speed'] > configWanted['acceleration'] ? 'speed' : 'acceleration';
 
-
-// const characteristicObj = {'speed': speed, 'acceleration': acceleration, 'weight': weight, 'handling': handling, 'grip': grip};
-
-
-
-
-
 // extract possibles configurations with config wanted
 var getPossibleConfig = function (characterName, kartName, wheelName, gliderName, callback) {
     let sqlQuery = "SELECT * FROM configurations ";
@@ -71,52 +64,76 @@ var objPossibleConfig = function(characterName, kartName, wheelName, gliderName,
     });
 }
 
+// Get three best config
 var compareConfig = function(characterName, kartName, wheelName, gliderName) {
     objPossibleConfig (characterName, kartName, wheelName, gliderName, function(configPossiblesObj) {
-        // Get best config by speed
-        let differencesSpeed = [];
+        let differences = [];
+        let differencesSpeed =[];
+        let differencesAcceleration =[];
+        let differencesSum =[];
         let indexMinSpeed = [];
+        let indexMinAcceleration = [];
+        let indexMinS = [];
+        let indexMinA = [];
+        // Tab of the distance between possible configs and wanted config
         for (i=0; i<configPossiblesObj.length; i++) {
             let diffS = Math.abs(configPossiblesObj[i].speed - configWanted.speed);
+            let diffA = Math.abs(configPossiblesObj[i].acceleration - configWanted.acceleration);
+            let diffW = Math.abs(configPossiblesObj[i].weight - configWanted.weight);
+            let diffH = Math.abs(configPossiblesObj[i].handling - configWanted.handling);
+            let diffG = Math.abs(configPossiblesObj[i].grip - configWanted.grip);
+            let diff = [diffS, diffA, diffW, diffH, diffG];
+            differences.push(diff);
             differencesSpeed.push(diffS);
+            differencesAcceleration.push(diffA);
+            differencesSum.push(diffS + diffA + diffW + diffH + diffG);
         }
-
-        let minSpeed = Math.min(...differencesSpeed);
-
-        for (j=0; j<differencesSpeed.length; j++) {
-            if (differencesSpeed[j] === minSpeed) {
-                indexMinSpeed.push(j);
+        // use priority speed or acceleration
+        if (priority.localeCompare('speed') === 0) {
+            let minSpeed = Math.min(...differencesSpeed);
+            for (i=0; i<differencesSpeed.length; i++) {
+                if (differencesSpeed[i] === minSpeed) {
+                    indexMinSpeed.push(i);
+                }
             }
         }
-        console.log(differencesSpeed);
-        console.log(minSpeed);
-        console.log(differencesSpeed.indexOf(minSpeed));
-        console.log(indexMinSpeed);
-        // console.log(configPossiblesObj);
-        // console.log(configWanted.speed);
-        // console.log(configPossiblesObj[1].speed);
-        // comparaison
+        if (priority.localeCompare('acceleration') === 0) {
+            let minAcceleration = Math.min(...differencesAcceleration);
+            for (i=0; i<differencesAcceleration.length; i++) {
+                if (differencesAcceleration[i] === minAcceleration) {
+                    indexMinAcceleration.push(i);
+                }
+            }
+        }
+        // retrieves the three best config by their index
+        var oneBestConfig ={};
+        var twoBestConfig ={};
+        var threeBestConfig ={};
 
+        if (indexMinAcceleration.length > 0) {
+            indexMinAcceleration.length >= 3 ? end=3 : end=indexMinAcceleration.length;
+            for (i=0; i<end ; i++) {
+                indexMinA.push(indexMinAcceleration[i]);
+            }
+            Object.assign(oneBestConfig, configPossiblesObj[indexMinA[0]]);
+            Object.assign(twoBestConfig, configPossiblesObj[indexMinA[1]]);
+            Object.assign(threeBestConfig, configPossiblesObj[indexMinA[2]]);
+        } else if (indexMinSpeed.length > 0) {
+            indexMinSpeed.length >= 3 ? end=3 : end=indexMinSpeed.length;
+            for (i=0; i<end ; i++) {
+                indexMinS.push(indexMinSpeed[i]);
+            }
+            Object.assign(oneBestConfig, configPossiblesObj[indexMinS[0]]);
+            Object.assign(twoBestConfig, configPossiblesObj[indexMinS[1]]);
+            Object.assign(threeBestConfig, configPossiblesObj[indexMinS[2]]);
+        }
 
+       console.log(oneBestConfig);
+       console.log(twoBestConfig);
+       console.log(threeBestConfig);
 
         connection.end();
     });
-
-    // var differences = [];
-    // for (const config of Object.values(configPossibles.speed)) {
-    //     let diffS = Math.abs(configWanted['speed'] - config);
-    //     //let diffA = Math.abs(configWanted['acceleration'] - config['acceleration']);
-    //     differences.push(diffS);
-    // }
-    // console.log(differences);
 }
 
-// console.log(configObj);
-// console.log(characteristicObj);
-
-// printPossibleConfig("Daisy", "Mr. Scooty", "Standard", "Cloud Glider");
 compareConfig(characterName, kartName, wheelName, gliderName);
-
-//console.log(configWanted);
-// console.log(priority);
-// compareConfig(characterName, kartName, wheelName, gliderName);
