@@ -15,11 +15,11 @@ connection.connect(function(err) {
 module.exports = connection;
 
 let characterName = 'Daisy';
-let kartName = 'Comet';
+let kartName = 'nevermind';
 let wheelName = 'nevermind';
-let gliderName = 'Plane Glider';
-const speed = 4;
-const acceleration = 5;
+let gliderName = 'nevermind';
+const speed = 5;
+const acceleration = 6;
 const weight = 0;
 const handling = 4;
 const grip = 4;
@@ -39,34 +39,35 @@ const priority =  configWanted['speed'] > configWanted['acceleration'] ? 'speed'
 // extract possibles configurations with config wanted
 var getPossibleConfig = function (characterName, kartName, wheelName, gliderName, callback) {
     let sqlQuery = "SELECT * FROM configurations ";
-    // if (!characterName.localeCompare('nervermind')) {
+    if (!(characterName.localeCompare('nervermind') === 1)) {
         sqlQuery = sqlQuery + "WHERE character_name = '" + characterName + "' ";
-    // }
-    if (kartName.localeCompare('nervermind')) {
+    }
+    if (!(kartName.localeCompare('nervermind') === 1)) {
         sqlQuery = sqlQuery + "AND kart_name = '" + kartName + "' ";
     }
     if (wheelName.localeCompare('nevermind')) {
         sqlQuery = sqlQuery + "AND wheel_name = '" + wheelName + "' ";
     }
-    if (gliderName.localeCompare('nervermind')) {
+    if (!(gliderName.localeCompare('nervermind') === 1)) {
         sqlQuery = sqlQuery + "AND glider_name = '" + gliderName + "' ";
     }
     connection.query(sqlQuery, function (err, configPossibles, fields) {
         if (err) throw err;
+        console.log(sqlQuery);
         callback(configPossibles);
     });
 }
 
-var objPossibleConfig = function(characterName, kartName, wheelName, gliderName, callback) {
-    getPossibleConfig(characterName, kartName, wheelName, gliderName, function (configPossibles) {
+var objPossibleConfig = async function(characterName, kartName, wheelName, gliderName, callback) {
+    await getPossibleConfig(characterName, kartName, wheelName, gliderName, function (configPossibles) {
         var configPossiblesObj = Object.values(JSON.parse(JSON.stringify(configPossibles)));
         callback(configPossiblesObj);
     });
 }
 
 // Get three best config
-var compareConfig = function(characterName, kartName, wheelName, gliderName) {
-    objPossibleConfig (characterName, kartName, wheelName, gliderName, function(configPossiblesObj) {
+var compareConfig = async function(characterName, kartName, wheelName, gliderName) {
+    await objPossibleConfig (characterName, kartName, wheelName, gliderName, function(configPossiblesObj) {
         let differences = [];
         let differencesSpeed =[];
         let differencesAcceleration =[];
@@ -111,16 +112,14 @@ var compareConfig = function(characterName, kartName, wheelName, gliderName) {
         var threeBestConfig ={};
 
         if (indexMinAcceleration.length > 0) {
-            indexMinAcceleration.length >= 3 ? end=3 : end=indexMinAcceleration.length;
-            for (i=0; i<end ; i++) {
+            for (i=0; i<indexMinAcceleration.length ; i = i + indexMinAcceleration.length/4) {
                 indexMinA.push(indexMinAcceleration[i]);
             }
             Object.assign(oneBestConfig, configPossiblesObj[indexMinA[0]]);
             Object.assign(twoBestConfig, configPossiblesObj[indexMinA[1]]);
             Object.assign(threeBestConfig, configPossiblesObj[indexMinA[2]]);
         } else if (indexMinSpeed.length > 0) {
-            indexMinSpeed.length >= 3 ? end=3 : end=indexMinSpeed.length;
-            for (i=0; i<end ; i++) {
+            for (i=0; i<indexMinSpeed.length ; i = i + indexMinSpeed.length/4) {
                 indexMinS.push(indexMinSpeed[i]);
             }
             Object.assign(oneBestConfig, configPossiblesObj[indexMinS[0]]);
@@ -128,9 +127,13 @@ var compareConfig = function(characterName, kartName, wheelName, gliderName) {
             Object.assign(threeBestConfig, configPossiblesObj[indexMinS[2]]);
         }
 
-       console.log(oneBestConfig);
-       console.log(twoBestConfig);
-       console.log(threeBestConfig);
+        console.log(oneBestConfig);
+        console.log(twoBestConfig);
+        console.log(threeBestConfig);
+        console.log(characterName.localeCompare('nervermind'));
+        console.log(kartName.localeCompare('nervermind'));
+        console.log(wheelName.localeCompare('nervermind'));
+        console.log(gliderName.localeCompare('nervermind'));
 
         connection.end();
     });
