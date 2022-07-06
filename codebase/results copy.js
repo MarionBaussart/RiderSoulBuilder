@@ -35,7 +35,7 @@ const configWanted = {'characterName': characterName,
                       'grip': grip};
 
 const priority =  configWanted['speed'] > configWanted['acceleration'] ? 'speed' : 'acceleration';
-
+let differencesSpeed = [];
 
 // const characteristicObj = {'speed': speed, 'acceleration': acceleration, 'weight': weight, 'handling': handling, 'grip': grip};
 
@@ -73,27 +73,17 @@ var objPossibleConfig = function(characterName, kartName, wheelName, gliderName,
 
 var compareConfig = function(characterName, kartName, wheelName, gliderName) {
     objPossibleConfig (characterName, kartName, wheelName, gliderName, function(configPossiblesObj) {
-        // Get best config by speed
-        let differencesSpeed = [];
-        let indexMinSpeed = [];
+        // console.log(configPossiblesObj);
+        // console.log(configWanted.speed);
         for (i=0; i<configPossiblesObj.length; i++) {
             let diffS = Math.abs(configPossiblesObj[i].speed - configWanted.speed);
             differencesSpeed.push(diffS);
         }
 
         let minSpeed = Math.min(...differencesSpeed);
-
-        for (j=0; j<differencesSpeed.length; j++) {
-            if (differencesSpeed[j] === minSpeed) {
-                indexMinSpeed.push(j);
-            }
-        }
         console.log(differencesSpeed);
         console.log(minSpeed);
         console.log(differencesSpeed.indexOf(minSpeed));
-        console.log(indexMinSpeed);
-        // console.log(configPossiblesObj);
-        // console.log(configWanted.speed);
         // console.log(configPossiblesObj[1].speed);
         // comparaison
 
