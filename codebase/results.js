@@ -30,14 +30,10 @@ var getPossibleConfig = async function (callback) {
         let kartName = queryRObj[0].kart_name || '';
         let wheelName = queryRObj[0].wheel_name || '';
         let gliderName = queryRObj[0].glider_name || '';
-        // const speed = queryR.speed;
-        // const acceleration = queryR.acceleration;
-        // const weight = queryR.weight;
-        // const handling = queryR.handling;
-        // const grip = queryR.grip;
+        const nervermind = 'nervermind';
         let firstQuery = 0;
         let sqlQuery = "SELECT * FROM configurations ";
-        if (!(characterName.localeCompare('nervermind') === 1)) {
+        if (characterName !== nervermind) {
             if (firstQuery === 0) {
                 sqlQuery = sqlQuery + "WHERE character_name = '" + characterName + "' ";
                 firstQuery++;

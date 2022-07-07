@@ -93,7 +93,7 @@ app.post('/characteristic', (req, res) => {
                   results.compareConfig();
                   setTimeout((callback) => {
                     res.status(300).redirect('/results');
-                  }, 1000);
+                  }, 1500);
 
                 }
           });
