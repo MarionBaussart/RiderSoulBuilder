@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const myconnection = require('express-myconnection');
-import { compareConfig } from './codebase/results.js';
+const results = require('./codebase/results');
+// import { compareConfig, objPossibleConfig, getPossibleConfig } from './codebase/results.js';
 
 const db = {
   host: 'localhost',
@@ -89,7 +90,11 @@ app.post('/characteristic', (req, res) => {
             if (err) {
                 console.log(err);
                 } else {
+                  results.compareConfig();
+                  setTimeout((callback) => {
                     res.status(300).redirect('/results');
+                  }, 1000);
+
                 }
           });
         }
@@ -104,23 +109,17 @@ app.get('/results', (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          connection.query("SELECT * FROM query", [], (err, queryResults) => {
+          connection.query("SELECT * FROM query", [], async (err, queryResults) => {
             if (err) {
                 console.log(err);
+
             } else {
-              compareConfig(queryResults.character_name,
-                            queryResults.kart_name,
-                            queryResults.wheel_name,
-                            queryResults.glider_name,
-                            queryResults.speed,
-                            queryResults.acceleration,
-                            queryResults.weight,
-                            queryResults.handling,
-                            queryResults.grip);
-              connection.query("SELECT * FROM results", [], (err, tableResults) => {
+
+              await connection.query("SELECT * FROM results", [], (err, tableResults) => {
                 if (err) {
                   console.log(err);
                 } else {
+
                   res.status(200).render('results', { queryResults, tableResults});
                 }
               });
