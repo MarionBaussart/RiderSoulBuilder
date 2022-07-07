@@ -24,6 +24,10 @@ app.set('views', 'front');
 
 // statics ressources
 app.use(express.static('./front/pictures'));
+app.use(express.static('./front/pictures/characters'));
+app.use(express.static('./front/pictures/karts'));
+app.use(express.static('./front/pictures/wheels'));
+app.use(express.static('./front/pictures/gliders'));
 app.use(express.static('./front/styles'));
 
 // home page
@@ -93,7 +97,7 @@ app.post('/characteristic', (req, res) => {
                   results.compareConfig();
                   setTimeout((callback) => {
                     res.status(300).redirect('/results');
-                  }, 1500);
+                  }, 2000);
 
                 }
           });

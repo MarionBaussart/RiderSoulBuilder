@@ -17,6 +17,7 @@
     position: relative;
     float:left;
     width: 70%;
+    height: 90%;
     margin: 0 auto 0 auto;
     background-color: white;
     color: #484848;
@@ -34,6 +35,16 @@
 .result {
     flex-direction: column;
 }
+
+p {
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+}
+
+
 
 h1 {
     font-size: 37px;
@@ -76,4 +87,79 @@ input[type="range"]:before {
 input[type="range"]:after {
     right: 0em;
     content: attr(max);
+}
+
+.config {
+    position: relative;
+    float:left;
+    width: 80%;
+    margin: 0 auto 0 auto;
+    background-color: white;
+    color: #484848;
+    border-radius: 30px;
+    box-shadow: 0 0 7px #AAAAAA;
+    position: absolute;
+    margin: 370px auto 30px auto;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 17px;
+    overflow: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wanted {
+    position: relative;
+    float:left;
+    width: 30%;
+    margin: 0 auto 0 auto;
+    background-color: white;
+    color: #484848;
+    border-radius: 30px;
+    box-shadow: 0 0 7px #AAAAAA;
+    position: absolute;
+    margin: 100px auto 30px auto;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 17px;
+    overflow: auto;
+    display: flex;
+}
+
+.configitem {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+.configimage {
+    width: 20%;
+    height: auto;
+    display: inline-block;
+}
+
+.containerimage {
+    display: flex;
+}
+.specificquestions {
+    display: flex;
+    margin-left: 50px;
+    margin-right: 100px;
+
+}
+
+.desiredcharacteristic {
+    display: flex;
+
+}
+
+.done {
+    display: flex;
+    font-size: 100px;
+}
+
+#submit {
+    width: 7em; height: 2em;
+    margin-left: 30px;
+    font-size: 15px;
 }

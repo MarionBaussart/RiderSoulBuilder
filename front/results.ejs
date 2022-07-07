@@ -18,11 +18,11 @@
             <div class="config wanted">
                 <ul>
                     <% for(i=0; i<queryResults.length; i++) { %>
-                        <h4>Wanted</h4>
-                        <li><%= queryResults[i].character_name %></li>
-                        <li><%= queryResults[i].kart_name %></li>
-                        <li><%= queryResults[i].wheel_name %></li>
-                        <li><%= queryResults[i].glider_name %></li>
+                        <h4>What you want</h4>
+                        <li>Character: <h4><%= queryResults[i].character_name %></h4></li>
+                        <li>Kart: <%= queryResults[i].kart_name %></li>
+                        <li>Wheels: <%= queryResults[i].wheel_name %></li>
+                        <li>Glider: <%= queryResults[i].glider_name %></li>
                         <li>speed: <%= queryResults[i].speed %></li>
                         <li>acceleration: <%= queryResults[i].acceleration %></li>
                         <li>weight: <%= queryResults[i].weight %></li>
@@ -33,21 +33,31 @@
                 </ul>
             </div>
             <div class="config">
-                <ul>
+
                     <% for(i=0; i<tableResults.length; i++) { %>
-                        <h4>Configuration <%= i + 1 %></h4>
-                        <li><%= tableResults[i].character_name %></li>
+                        <ul class="configitem">
+                        <h4>Configuration <%= i + 1 %></h4><br>
+                        <li><h4><%= tableResults[i].character_name %></h4></li><br>
+                        <div class="containerimage">
+                        <img class="configimage"src="/<%= tableResults[i].character_name %>.png" alt="">
+                        <img class="configimage"src="/<%= tableResults[i].kart_name %>.png" alt="">
+                        <img class="configimage"src="/<%= tableResults[i].wheel_name %>.png" alt="">
+                        <img class="configimage"src="/<%= tableResults[i].glider_name %>.png" alt="">
+                        </div><br>
                         <li><%= tableResults[i].kart_name %></li>
                         <li><%= tableResults[i].wheel_name %></li>
                         <li><%= tableResults[i].glider_name %></li>
+
                         <li>speed: <%= tableResults[i].speed %></li>
                         <li>acceleration: <%= tableResults[i].acceleration %></li>
                         <li>weight: <%= tableResults[i].weight %></li>
                         <li>handling: <%= tableResults[i].handling %></li>
                         <li>grip: <%= tableResults[i].grip %></li>
                         <br>
+                        </ul>
+
                     <% } %>
-                </ul>
+
             </div>
         </div>
     </div>
