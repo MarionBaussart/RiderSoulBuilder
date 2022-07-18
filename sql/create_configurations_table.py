@@ -10,7 +10,9 @@ from kart import Base, Kart
 from wheel import Base, Wheel
 from glider import Base, Glider
 
-from sqlalchemy import create_engine, Table, Column, Integer, Float, String, MetaData
+from sqlalchemy import create_engine, Table, Column, Integer, Float, String
+from sqlalchemy import MetaData
+
 from sqlalchemy.orm import Session
 
 if __name__ == "__main__":
@@ -27,9 +29,10 @@ if __name__ == "__main__":
     # create table configurations
     meta = MetaData()
 
-    configurations = Table (
+    configurations = Table(
         'configurations', meta,
-        Column('id', Integer, primary_key=True, autoincrement=True, nullable=False),
+        Column('id', Integer, primary_key=True, autoincrement=True,
+               nullable=False),
         Column('speed', Float),
         Column('acceleration', Float),
         Column('weight', Float),
