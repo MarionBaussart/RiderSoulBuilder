@@ -1,165 +1,170 @@
 * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .content {
-    height: 100vh;
-    width: 100%;
-    background-image: url(/background.png);
-    display: flex;
-
+  height: 100vh;
+  width: 100%;
+  background-image: url(/background.png);
+  display: flex;
 }
 
 .builder {
-    position: relative;
-    float:left;
-    width: 70%;
-    height: 90%;
-    margin: 0 auto 0 auto;
-    background-color: white;
-    color: #484848;
-    border-radius: 30px;
-    box-shadow: 0 0 7px #AAAAAA;
-    position: absolute;
-    margin: 30px auto 30px auto;
-    left: 50%;
-    transform: translate(-50%);
-    padding: 17px;
-    overflow: auto;
-    display: flex;
+  position: relative;
+  float:left;
+  width: 70%;
+  height: 90%;
+  margin: 0 auto 0 auto;
+  background-color: white;
+  color: #484848;
+  border-radius: 30px;
+  box-shadow: 0 0 7px #AAAAAA;
+  position: absolute;
+  margin: 30px auto 30px auto;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 17px;
+  overflow: auto;
+  display: flex;
 }
 
 .result {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 p {
-    text-align: center;
+  text-align: center;
 }
 
 .title {
-    text-align: center;
+  text-align: center;
 }
-
-
 
 h1 {
-    font-size: 37px;
-    text-align: center;
+  font-size: 37px;
+  text-align: center;
 }
+
 h2 {
-    font-size: 33px;
-    text-align: center;
-    color: rgb(153, 192, 228);
+  font-size: 33px;
+  text-align: center;
+  color: rgb(153, 192, 228);
 }
+
 h3 {
-    padding-top: 10px;
-    font-size: 19px;
-    text-align:left;
+  padding-top: 10px;
+  font-size: 19px;
+  text-align:left;
 }
 
 .question {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 
 .button {
-    padding-top: 10px;
-    padding-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 input[type="range"] {
-    position: relative;
-    margin-left: 1em;
+  position: relative;
+  margin-left: 1em;
 }
 input[type="range"]:after,
 input[type="range"]:before {
-    position: absolute;
-    top: 1em;
-    color:#aaa;
+  position: absolute;
+  top: 1em;
+  color:#aaa;
 }
 input[type="range"]:before {
-    left:0em;
-    content: attr(min);
+  left:0em;
+  content: attr(min);
 }
 input[type="range"]:after {
-    right: 0em;
-    content: attr(max);
+  right: 0em;
+  content: attr(max);
 }
 
 .config {
-    position: relative;
-    float:left;
-    width: 80%;
-    margin: 0 auto 0 auto;
-    background-color: white;
-    color: #484848;
-    border-radius: 30px;
-    box-shadow: 0 0 7px #AAAAAA;
-    position: absolute;
-    margin: 370px auto 30px auto;
-    left: 50%;
-    transform: translate(-50%);
-    padding: 17px;
-    overflow: auto;
-    display: flex;
-    justify-content: space-between;
+  position: relative;
+  float:left;
+  width: 90%;
+  margin: 0 auto 0 auto;
+  background-color: white;
+  color: #484848;
+  border-radius: 30px;
+  box-shadow: 0 0 7px #AAAAAA;
+  position: absolute;
+  margin: 450px auto 30px auto;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 17px;
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .wanted {
-    position: relative;
-    float:left;
-    width: 30%;
-    margin: 0 auto 0 auto;
-    background-color: white;
-    color: #484848;
-    border-radius: 30px;
-    box-shadow: 0 0 7px #AAAAAA;
-    position: absolute;
-    margin: 100px auto 30px auto;
-    left: 50%;
-    transform: translate(-50%);
-    padding: 17px;
-    overflow: auto;
-    display: flex;
+  position: relative;
+  float:left;
+  width: 30%;
+  margin: 0 auto 0 auto;
+  background-color: white;
+  color: #484848;
+  border-radius: 30px;
+  box-shadow: 0 0 7px #AAAAAA;
+  position: absolute;
+  margin: 100px auto 30px auto;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 17px;
+  overflow: auto;
+  display: flex;
 }
 
 .configitem {
-    display: flex;
-    flex-direction: column;
-    width: 35%;
+  display: flex;
+  flex-direction: column;
+  width: 35%;
 }
 
 .configimage {
-    width: 20%;
-    height: auto;
-    display: inline-block;
+  width: 20%;
+  height: auto;
+  display: inline-block;
+}
+
+.wantedimage {
+  width: 50%;
 }
 
 .containerimage {
-    display: flex;
+  display: flex;
 }
 .specificquestions {
-    display: flex;
-    margin-left: 50px;
-    margin-right: 100px;
-
+  display: flex;
+  margin-left: 50px;
+  margin-right: 100px;
 }
 
 .desiredcharacteristic {
-    display: flex;
-
+  display: flex;
 }
 
 .done {
-    display: flex;
-    font-size: 100px;
+  display: flex;
+  font-size: 100px;
 }
 
 #submit {
-    width: 7em; height: 2em;
-    margin-left: 30px;
-    font-size: 15px;
+  width: 7em; height: 2em;
+  margin-left: 30px;
+  font-size: 15px;
+}
+
+.rangeconfigpossible {
+  width: 50%;
 }

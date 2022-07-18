@@ -1,0 +1,221 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background-image: url(/RiderSoulBuilder/front/pictures/background.png);
+}
+
+.background {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* navigation bar */
+.navigation-header {
+  position: fixed;
+  height: 7vh;
+  width: 100%;
+  background-color: white;
+  margin: 0 auto 0 auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+  color: rgb(153, 192, 228);
+}
+
+.navigation-header p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 40px;
+  color: rgb(153, 192, 228);
+  font-weight: bold;
+}
+
+.navigation-header_item {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#navigation-header_link {
+  font-size: 25px;
+  color: black;
+  font-style: normal;
+}
+
+#navigation-header_link:hover {
+  font-size: 25px;
+  color: rgb(153, 192, 228);
+  font-style: normal;
+}
+
+/* overview */
+.intro {
+  padding: 3rem;
+  height: 80vh;
+  width: 70%;
+  background-color: white;
+  margin: 10px auto 0 auto;
+  text-align: center;
+  border-radius: 30px;
+  box-shadow: 0 0 7px #AAAAAA;
+  margin: 0 auto 0 auto;
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 60vh;
+}
+
+.img-intro {
+  height: 80%;
+  padding: 3rem;
+}
+
+.text-intro {
+  justify-content: space-around;
+  font-size: 27px;
+  text-align: center;
+}
+
+#try-it {
+  font-size: 27px;
+  padding: 1%;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+#try-it:hover {
+  background-color: rgb(195, 226, 255);
+}
+
+/* features */
+.features {
+  padding: 3rem;
+  height: 185vh;
+  width: 70%;
+  background-color: white;
+  margin: 10px auto 0 auto;
+  text-align: center;
+  border-radius: 30px;
+  box-shadow: 0 0 7px #AAAAAA;
+  margin: 30px auto 30px auto;
+}
+
+.features-content1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 60vh;
+  padding: 3rem;
+}
+
+.img-feature1 {
+  height: 100%;
+  padding: 3rem;
+}
+
+.text-feature1 {
+  justify-content: space-around;
+  font-size: 27px;
+  text-align: center;
+}
+
+.features-content2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 40vh;
+  padding: 3rem;
+}
+
+.img-feature2 {
+  height: 50%;
+  padding: 3rem;
+}
+
+.text-feature2 {
+  justify-content: space-around;
+  font-size: 27px;
+  text-align: center;
+}
+
+.features-content3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 40vh;
+  padding: 3rem;
+}
+
+.img-feature3 {
+  height: 160%;
+  padding: 3rem;
+}
+
+.text-feature3 {
+  justify-content: space-around;
+  font-size: 27px;
+  text-align: center;
+}
+
+ /* about me */
+.about-me {
+  padding: 3rem;
+  height: 120vh;
+  width: 70%;
+  background-color: white;
+  margin: 10px auto 0 auto;
+  text-align: center;
+  border-radius: 30px;
+  box-shadow: 0 0 7px #AAAAAA;
+  margin: 30px auto 30px auto;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 40vh;
+  padding: 3rem;
+}
+
+.img-about {
+  height: 120%;
+  border-radius: 500px;
+  padding: 3rem;
+}
+
+.text-about {
+  justify-content: space-around;
+  font-size: 27px;
+  text-align: center;
+}
+
+.links {
+  font-size: 20px;
+}
+
+#logo-img {
+  width: 5%;
+  align-items: center;
+  padding: 0px 0px 0px 100px;
+}
+
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 50px;
+  color: rgb(153, 192, 228);
+}
+
+.video {
+  padding: 3rem;
+}
